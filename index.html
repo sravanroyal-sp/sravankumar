@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sravan Kumar | Data Scientist</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Outfit:wght@300;500;700;800&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif'],
+                        serif: ['DM Serif Display', 'serif'],
+                    },
+                    colors: {
+                        'canvas': '#F8FAFC',       
+                        'ink': '#022c22',          
+                        'emerald-primary': '#059669', 
+                        'teal-accent': '#14b8a6',  
+                        'lime-pop': '#84cc16',     
+                        'glass-white': 'rgba(255, 255, 255, 0.8)',
+                    },
+                    animation: {
+                        'float': 'float 10s ease-in-out infinite',
+                        'slide-up': 'slideUp 0.8s cubic-bezier(0.2, 1, 0.3, 1) forwards',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        },
+                        slideUp: {
+                            '0%': { opacity: '0', transform: 'translateY(40px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
+                    },
+                    backgroundImage: {
+                        'noise': "url('data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noiseFilter%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.65%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noiseFilter)%22 opacity=%220.05%22/%3E%3C/svg%3E')",
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #F8FAFC;
+            color: #022c22;
+            overflow-x: hidden;
+        }
+
+        /* Gradient Orbs */
+        .orb {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(100px);
+            z-index: -1;
+            opacity: 0.4;
+            animation: float 15s infinite alternate;
+        }
+        .orb-1 { top: -20%; right: -10%; width: 700px; height: 700px; background: #dcfce7; }
+        .orb-2 { bottom: -10%; left: -10%; width: 600px; height: 600px; background: #ccfbf1; }
+
+        /* Glass Cards */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            box-shadow: 0 10px 40px -10px rgba(5, 150, 105, 0.1);
+            transition: all 0.4s cubic-bezier(0.2, 1, 0.3, 1);
+        }
+        .glass-card:hover {
+            background: rgba(255, 255, 255, 0.95);
+            transform: translateY(-5px);
+            box-shadow: 0 20px 50px -10px rgba(5, 150, 105, 0.2);
+            border-color: #10b981;
+        }
+
+        /* Text Gradient */
+        .text-gradient {
+            background: linear-gradient(to right, #059669, #14b8a6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Reveal Animation */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.2, 1, 0.3, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="antialiased bg-noise">
+
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+
+    <nav class="fixed w-full z-50 py-4 bg-glass-white backdrop-blur-md border-b border-emerald-100/50">
+        <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
+            <a href="#" class="font-serif italic text-3xl text-emerald-primary font-bold">SK.</a>
+            
+            <div class="hidden md:flex space-x-10 text-sm font-bold tracking-widest uppercase text-ink/70">
+                <a href="#about" class="hover:text-emerald-primary transition-colors">About</a>
+                <a href="#skills" class="hover:text-emerald-primary transition-colors">Expertise</a>
+                <a href="#experience" class="hover:text-emerald-primary transition-colors">History</a>
+                <a href="#projects" class="hover:text-emerald-primary transition-colors">Projects</a>
+            </div>
+
+            <a href="#contact" class="hidden md:inline-block px-6 py-2.5 bg-emerald-primary text-white rounded-full hover:bg-emerald-800 transition-all text-xs font-bold uppercase tracking-widest shadow-lg shadow-emerald-500/30">
+                Hire Me
+            </a>
+        </div>
+    </nav>
+
+    <section class="min-h-screen flex flex-col justify-center items-center px-6 pt-20 relative text-center">
+        <div class="max-w-5xl mx-auto w-full z-10 animate-slide-up">
+            
+            <div class="inline-block px-4 py-1.5 mb-8 rounded-full bg-emerald-100 text-emerald-800 text-xs font-bold tracking-[0.2em] border border-emerald-200">
+                DATA SCIENTIST • AI LEAD
+            </div>
+            
+            <h1 class="font-serif text-[12vw] md:text-[9rem] leading-[0.85] text-ink mb-8 tracking-tight">
+                Sravan <br>
+                <span class="text-gradient italic pr-4">Kumar</span>
+            </h1>
+
+            <p class="text-xl md:text-2xl text-ink/70 font-light leading-relaxed mb-12 max-w-3xl mx-auto">
+                Transforming raw data into functional intelligence. 
+                <br>
+                <span class="font-medium text-emerald-primary">AI Architecture</span> • <span class="font-medium text-emerald-primary">Cloud Solutions</span> • <span class="font-medium text-emerald-primary">Leadership</span>
+            </p>
+
+            <div class="flex flex-col sm:flex-row justify-center gap-6">
+                <a href="#projects" class="px-10 py-4 bg-ink text-white font-bold rounded-full hover:shadow-2xl hover:-translate-y-1 transition-all">
+                    View My Work
+                </a>
+                <a href="https://linkedin.com/in/sravan-kumar-pandugayala" target="_blank" class="px-10 py-4 bg-white border border-emerald-100 text-emerald-primary font-bold rounded-full hover:bg-emerald-50 transition-all shadow-sm">
+                    LinkedIn Profile
+                </a>
+            </div>
+        </div>
+        
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce text-emerald-primary/50">
+            <i class="fa-solid fa-arrow-down"></i>
+        </div>
+    </section>
+
+    <section id="skills" class="py-32 relative">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-20 reveal">
+                <span class="text-emerald-primary font-bold tracking-widest uppercase text-xs">Competencies</span>
+                <h2 class="font-serif text-5xl md:text-6xl text-ink mt-3">Technical <span class="text-gradient">Stack</span></h2>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                
+                <div class="glass-card p-10 rounded-3xl reveal group">
+                    <div class="flex items-center gap-4 mb-8 border-b border-emerald-100 pb-4">
+                        <i class="fa-solid fa-code text-3xl text-emerald-600"></i>
+                        <h3 class="text-2xl font-serif text-ink">Core Technologies</h3>
+                    </div>
+                    <div class="grid grid-cols-2 gap-y-6">
+                        <div><span class="block text-xs font-bold text-slate-400 uppercase">Lang</span><span class="text-lg font-bold text-ink">Python</span></div>
+                        <div><span class="block text-xs font-bold text-slate-400 uppercase">DB</span><span class="text-lg font-bold text-ink">SQL</span></div>
+                        <div><span class="block text-xs font-bold text-slate-400 uppercase">Logic</span><span class="text-lg font-bold text-ink">Data Structures</span></div>
+                        <div><span class="block text-xs font-bold text-slate-400 uppercase">Web</span><span class="text-lg font-bold text-ink">Web Development</span></div>
+                    </div>
+                </div>
+
+                <div class="glass-card p-10 rounded-3xl reveal group" style="transition-delay: 0.1s;">
+                    <div class="flex items-center gap-4 mb-8 border-b border-emerald-100 pb-4">
+                        <i class="fa-solid fa-brain text-3xl text-teal-600"></i>
+                        <h3 class="text-2xl font-serif text-ink">AI & Intelligence</h3>
+                    </div>
+                    <div class="grid grid-cols-2 gap-y-6">
+                        <div><span class="block text-xs font-bold text-slate-400 uppercase">Generative</span><span class="text-lg font-bold text-ink">Gen AI Models</span></div>
+                        <div><span class="block text-xs font-bold text-slate-400 uppercase">Technique</span><span class="text-lg font-bold text-ink">Prompt Engineering</span></div>
+                        <div><span class="block text-xs font-bold text-slate-400 uppercase">Training</span><span class="text-lg font-bold text-ink">RLHF</span></div>
+                        <div><span class="block text-xs font-bold text-slate-400 uppercase">Analysis</span><span class="text-lg font-bold text-ink">Data Analysis</span></div>
+                    </div>
+                </div>
+
+                <div class="glass-card p-10 rounded-3xl reveal group" style="transition-delay: 0.2s;">
+                    <div class="flex items-center gap-4 mb-8 border-b border-emerald-100 pb-4">
+                        <i class="fa-solid fa-cloud text-3xl text-blue-500"></i>
+                        <h3 class="text-2xl font-serif text-ink">Tools & Cloud</h3>
+                    </div>
+                    <div class="grid grid-cols-2 gap-y-6">
+                        <div><span class="block text-xs font-bold text-slate-400 uppercase">Cloud</span><span class="text-lg font-bold text-ink">Microsoft Azure</span></div>
+                        <div><span class="block text-xs font-bold text-slate-400 uppercase">Tools</span><span class="text-lg font-bold text-ink">Microsoft Office</span></div>
+                        <div><span class="block text-xs font-bold text-slate-400 uppercase">AI Tool</span><span class="text-lg font-bold text-ink">Microsoft Copilot</span></div>
+                    </div>
+                </div>
+
+                <div class="glass-card p-10 rounded-3xl reveal group" style="transition-delay: 0.3s;">
+                    <div class="flex items-center gap-4 mb-8 border-b border-emerald-100 pb-4">
+                        <i class="fa-solid fa-users text-3xl text-lime-600"></i>
+                        <h3 class="text-2xl font-serif text-ink">Leadership</h3>
+                    </div>
+                    <div class="grid grid-cols-2 gap-y-6">
+                        <div><span class="block text-xs font-bold text-slate-400 uppercase">Role</span><span class="text-lg font-bold text-ink">Team Leadership</span></div>
+                        <div><span class="block text-xs font-bold text-slate-400 uppercase">Skill</span><span class="text-lg font-bold text-ink">Public Speaking</span></div>
+                        <div><span class="block text-xs font-bold text-slate-400 uppercase">Soft Skill</span><span class="text-lg font-bold text-ink">Problem Solving</span></div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="experience" class="py-32 bg-white relative">
+        <div class="max-w-4xl mx-auto px-6 relative z-10">
+            
+            <h2 class="font-serif text-5xl text-center mb-20 reveal">Professional <span class="text-gradient">Timeline</span></h2>
+            
+            <div class="border-l-2 border-emerald-100 pl-8 space-y-16">
+                
+                <div class="relative reveal group">
+                    <div class="absolute -left-[41px] top-2 w-5 h-5 rounded-full bg-white border-4 border-emerald-500 group-hover:scale-125 transition-transform"></div>
+                    <span class="inline-block px-3 py-1 mb-2 rounded bg-emerald-100 text-emerald-800 text-xs font-bold uppercase tracking-widest">Current</span>
+                    <h3 class="text-3xl font-bold text-ink">AI Data Curation Intern</h3>
+                    <p class="text-xl text-emerald-700 font-medium mb-3">Skypoint Cloud</p>
+                    <p class="text-slate-600 text-lg leading-relaxed">
+                        Training AI models via RLHF (Reinforcement Learning from Human Feedback) to assist in healthcare solutions.
+                    </p>
+                </div>
+
+                <div class="relative reveal group">
+                    <div class="absolute -left-[41px] top-2 w-5 h-5 rounded-full bg-white border-4 border-lime-500 group-hover:scale-125 transition-transform"></div>
+                    <span class="inline-block px-3 py-1 mb-2 rounded bg-lime-100 text-lime-800 text-xs font-bold uppercase tracking-widest">Leadership</span>
+                    <h3 class="text-3xl font-bold text-ink">Team Lead & Project Manager</h3>
+                    <p class="text-xl text-lime-700 font-medium mb-3">Spark Squad</p>
+                    <p class="text-slate-600 text-lg leading-relaxed">
+                        Led the team to become <strong>Pitch Up 10.0 Finalists</strong>. Managed projects focusing on healthcare and agriculture innovations.
+                    </p>
+                </div>
+
+                <div class="relative reveal group">
+                    <div class="absolute -left-[41px] top-2 w-5 h-5 rounded-full bg-white border-4 border-blue-500 group-hover:scale-125 transition-transform"></div>
+                    <span class="inline-block px-3 py-1 mb-2 rounded bg-blue-100 text-blue-800 text-xs font-bold uppercase tracking-widest">Internship</span>
+                    <h3 class="text-3xl font-bold text-ink">Microsoft Azure AI Intern</h3>
+                    <p class="text-xl text-blue-600 font-medium mb-3">Edunet Foundation</p>
+                    <p class="text-slate-600 text-lg leading-relaxed">
+                        Enhanced skills in Azure Cloud and Artificial Intelligence deployment strategies.
+                    </p>
+                </div>
+
+                <div class="relative reveal group">
+                    <div class="absolute -left-[41px] top-2 w-5 h-5 rounded-full bg-white border-4 border-teal-500 group-hover:scale-125 transition-transform"></div>
+                    <span class="inline-block px-3 py-1 mb-2 rounded bg-teal-100 text-teal-800 text-xs font-bold uppercase tracking-widest">May - Jul 2025</span>
+                    <h3 class="text-3xl font-bold text-ink">Data Analyst Intern</h3>
+                    <p class="text-xl text-teal-700 font-medium mb-3">APSSDC</p>
+                    <p class="text-slate-600 text-lg leading-relaxed">
+                        Worked on data analysis workflows and data visualization.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="py-32 bg-canvas relative">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-16 reveal">
+                <h2 class="font-serif text-5xl text-ink">Featured <span class="text-emerald-primary italic">Works</span></h2>
+                <span class="text-sm font-bold text-slate-400 uppercase tracking-widest">Engineering Reality</span>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <div class="glass-card rounded-2xl overflow-hidden group reveal">
+                    <div class="h-48 bg-gradient-to-br from-emerald-50 to-teal-50 flex items-center justify-center">
+                        <i class="fa-solid fa-mobile-screen text-5xl text-emerald-600 group-hover:scale-110 transition-transform duration-500"></i>
+                    </div>
+                    <div class="p-8">
+                        <div class="flex gap-2 mb-4"><span class="px-2 py-1 bg-emerald-100 text-emerald-800 text-[10px] font-bold uppercase rounded">Android</span></div>
+                        <h3 class="text-2xl font-bold text-ink mb-2">Direct Market Access</h3>
+                        <p class="text-slate-600 text-sm">Mobile app empowering farmers to sell products directly to buyers.</p>
+                    </div>
+                </div>
+
+                <div class="glass-card rounded-2xl overflow-hidden group reveal" style="transition-delay: 0.1s;">
+                    <div class="h-48 bg-gradient-to-br from-red-50 to-pink-50 flex items-center justify-center">
+                        <i class="fa-solid fa-heart-pulse text-5xl text-red-500 group-hover:scale-110 transition-transform duration-500"></i>
+                    </div>
+                    <div class="p-8">
+                        <div class="flex gap-2 mb-4"><span class="px-2 py-1 bg-red-100 text-red-800 text-[10px] font-bold uppercase rounded">Health</span></div>
+                        <h3 class="text-2xl font-bold text-ink mb-2">Book Appointment</h3>
+                        <p class="text-slate-600 text-sm">Simplified healthcare appointment system. Pitch Up 10.0 Finalist.</p>
+                    </div>
+                </div>
+
+                <div class="glass-card rounded-2xl overflow-hidden group reveal" style="transition-delay: 0.2s;">
+                    <div class="h-48 bg-gradient-to-br from-indigo-50 to-blue-50 flex items-center justify-center">
+                        <i class="fa-solid fa-robot text-5xl text-indigo-500 group-hover:scale-110 transition-transform duration-500"></i>
+                    </div>
+                    <div class="p-8">
+                        <div class="flex gap-2 mb-4"><span class="px-2 py-1 bg-indigo-100 text-indigo-800 text-[10px] font-bold uppercase rounded">AI</span></div>
+                        <h3 class="text-2xl font-bold text-ink mb-2">AI Agents</h3>
+                        <p class="text-slate-600 text-sm">Responsive AI Agents using NLP and LLMs for task delegation.</p>
+                    </div>
+                </div>
+
+                <div class="glass-card rounded-2xl overflow-hidden group reveal">
+                    <div class="h-48 bg-gradient-to-br from-yellow-50 to-orange-50 flex items-center justify-center">
+                        <i class="fa-solid fa-calculator text-5xl text-yellow-600 group-hover:scale-110 transition-transform duration-500"></i>
+                    </div>
+                    <div class="p-8">
+                        <div class="flex gap-2 mb-4"><span class="px-2 py-1 bg-yellow-100 text-yellow-800 text-[10px] font-bold uppercase rounded">Java</span></div>
+                        <h3 class="text-2xl font-bold text-ink mb-2">Smart CSAT Solver</h3>
+                        <p class="text-slate-600 text-sm">Problem solver for UPSC aspirants using Prompt Engineering.</p>
+                    </div>
+                </div>
+
+                <div class="glass-card rounded-2xl overflow-hidden group reveal" style="transition-delay: 0.1s;">
+                    <div class="h-48 bg-gradient-to-br from-purple-50 to-fuchsia-50 flex items-center justify-center">
+                        <i class="fa-solid fa-wallet text-5xl text-purple-600 group-hover:scale-110 transition-transform duration-500"></i>
+                    </div>
+                    <div class="p-8">
+                        <div class="flex gap-2 mb-4"><span class="px-2 py-1 bg-purple-100 text-purple-800 text-[10px] font-bold uppercase rounded">Python</span></div>
+                        <h3 class="text-2xl font-bold text-ink mb-2">Expense Tracker</h3>
+                        <p class="text-slate-600 text-sm">Python-based tracker to analyze and manage daily expenses.</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="mt-8 glass-card p-8 rounded-2xl text-center reveal border border-emerald-100">
+                <h3 class="font-serif text-2xl text-emerald-primary mb-2">Community Impact</h3>
+                <p class="text-slate-600 max-w-2xl mx-auto">
+                    Project Head for Community Service. Educated farmers in Siddavatam, Kadapa on the importance of Crop Rotation.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-32 bg-ink text-white text-center relative overflow-hidden">
+        <div class="absolute w-[600px] h-[600px] bg-emerald-900/50 rounded-full blur-[120px] top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"></div>
+        
+        <div class="max-w-4xl mx-auto px-6 relative z-10 reveal">
+            <h2 class="font-serif text-5xl md:text-7xl mb-8">Let's Build the <br> <span class="italic text-emerald-400">Extraordinary.</span></h2>
+            
+            <a href="mailto:pandugayalasravankumar@gmail.com" class="text-xl md:text-3xl font-light text-gray-400 hover:text-white transition-colors border-b border-white/20 hover:border-white pb-2 mb-12 inline-block">
+                pandugayalasravankumar@gmail.com
+            </a>
+
+            <div class="flex justify-center gap-8 mt-12 text-3xl">
+                <a href="https://linkedin.com/in/sravan-kumar-pandugayala" target="_blank" class="w-14 h-14 rounded-full border border-white/20 flex items-center justify-center hover:bg-emerald-600 hover:border-emerald-600 transition-all"><i class="fa-brands fa-linkedin-in"></i></a>
+                <a href="https://github.com/sravanroyal-sp" target="_blank" class="w-14 h-14 rounded-full border border-white/20 flex items-center justify-center hover:bg-emerald-600 hover:border-emerald-600 transition-all"><i class="fa-brands fa-github"></i></a>
+                <a href="tel:9063522594" class="w-14 h-14 rounded-full border border-white/20 flex items-center justify-center hover:bg-emerald-600 hover:border-emerald-600 transition-all"><i class="fa-solid fa-phone"></i></a>
+            </div>
+
+            <p class="mt-24 text-white/30 text-xs tracking-widest uppercase">© 2025 Sravan Kumar Pandugayala</p>
+        </div>
+    </section>
+
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if(entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
